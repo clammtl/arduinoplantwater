@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block main %}
+
+<h2>Arduino code</h2>
+<p></p>
+<br></br>
+<h1></h1>
+
+<br></br>
+<p>The arduino code is configured for the MKR1000 and uses C. The first functionality was implemented based the WiFiWebServer tutorial to allow the MKR1000 to connect to the wifi.
+From another WiFi101 example (see <a href="https://github.com/arduino-libraries/WiFi101/blob/master/examples/AP_SimpleWebServer/AP_SimpleWebServer.ino">here</a>),
+another functionality was implemented; the SSID and password are located in a separate library, allowing a user to define these variables separately. The arduino
+initiates the connection at setup, and success or failure is relayed to the serial screen.
+</p>
+<p>Then, the soil sensor was added to the arduino code, based on a tutorial from the Sparkfun sensor (see <a href="https://learn.sparkfun.com/tutorials/soil-moisture-sensor-hookup-guide">here</a>).
+The analog value is translated into a percentage value and printed to the serial screen. If the percentage drops below 40%, the pump is activated through a digital
+output. A delay is set to allow the water to be pumped for 3 seconds. Another delay is set at 15 seconds to allow the soil to absorb the water before another reading is taken.
+</p>
+<p>Finally, I based myself on a ThingSpeak api tutorial to send the sensor reading (see <a href="https://www.mathworks.com/help/thingspeak/continuously-collect-data-and-bulk-update-a-thingspeak-channel-using-an-arduino-mkr1000-board-or-an-esp8266-board.html">here</a>).
+A buffer is created to collect the moisture sensor data every 15 seconds. The data is then sent every 2 minutes. This reduces the power usage of the device.
+A relative time stamp is used each time the buffer is updated. The POST request's success or failure is then printed on Serial. The channel is public for this example's purposes,
+however a private channel can also be used if the key is provided in the POST request.
+</p>
+<p>The code can be found <a href="https://github.com/clammtl/arduinoplantwaterer">here</a>.</p>
+
+{% endblock %}
+
+
+
+

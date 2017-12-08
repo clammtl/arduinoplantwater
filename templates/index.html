@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block main %}
+<h2>Project</h2>
+<p></p>
+<br></br>
+<p>For my final project implementation for CSCI-50 at Harvard, I decided to find a solution to common problems. Due to travel, I've lost a
+number of plants over the years due to improper watering, especially in the summer. There are a variety of automatic plant waterers on the market, including
+mechanical solutions. There are also some electric plant waterers, alas these are often too expensive for a basic home use, since these are mostly used
+in a commercial setting.</p>
+<p>
+Wouldn't it be great to combine different pieces of technology to create a cheap solution? I have decided to combine a microcontroller with wifi capabilities
+with a soil moisture sensor and a peristaltic pump. The peristaltic pump starts automatically when the soil moisture level is too low, and the soil moisture data
+is sent to ThingSpeak, an IoT platform from MATHWORKS. The data is available remotely.
+</p>
+<p>This project was designed with a few objectives in mind:</p>
+<ul>
+    <li>Cost effectiveness</li>
+    <li>Ease of use</li>
+    <li>Design flexibility</li>
+    <li>Easily modifiable to implement additional features</li>
+</ul>
+<p>Other features can easily be added to this system. Some ideas for future development include:</p>
+<ul>
+    <li>Implementation of multiple soil sensors on a single Arduino to monitor several plants</li>
+    <li>Adding a push feature from the ThingSpeak server to water plant manually with certain security features</li>
+    <li>Collect data regarding latest pump activation times</li>
+    <li>Adding an ambiant air temperature and humidity sensor</li>
+    <li>Collect light exposure data</li>
+    <li>etc.</li>
+</ul>
+<br></br>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Soil Moisture sensor
+{% endblock %}
+
+{% block main %}
+<h4>Latest humidity readings</h4>
+<br></br>
+<table style="width:100%">
+<tr>
+<iframe width="450" height="250" align="center" style="border: 1px solid #cccccc;" src="http://thingspeak.com/channels/376616/charts/1?dynamic=true"></iframe>
+</tr><br></br>
+</table>
+<br></br>
+<p>
+This chart above presents the soil moisture feed coming from ThingSpeak in a dynamic fashion. ThingSpeak is an IoT analytics platform that allows to store, visualize,
+and analyze live data streams. Data is stored on the cloud and is easily accesible with an API. This solution was used as it was easy to integrate
+with the watering system and could easily be accessed remotely on any device. A channel had to be set up with a humidity level field, recording the percentage
+of soil humidity being sent to the sensor every 2 minutes.
+</p>
+<br></br>
+
+{% endblock %}
+
+
+
+

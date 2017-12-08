@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block main %}
+<h2>Arduino circuit design</h2>
+<p></p>
+<br></br>
+<h1>Parts list:</h1>
+<ul>
+    <li>Arduino MKR1000</li>
+    <li>Breadboard</li>
+    <li>Soil Moisture Sensor with 2 probes, and 3 pins (VCC, GND and Data)</li>
+    <li>Relay (I used Seeed's grove relay)</li>
+    <li>12v peristaltic pump</li>
+    <li>12v power supply</li>
+    <li>Tubes for irrigation</li>
+    <li>Water container</li>
+    <li>Cables</li>
+    <li>Push button</li>
+</ul>
+<br></br>
+<p>The 12v power supply has one wire connected to one end of the pump, and another end is connected to the relay.
+The other end of the pump is connected to the relay as well. The relay acts as a switch to turn on and off the pump. Using the 5V high voltage
+from the controller, we can control the switch. A LED indicator on the relay's board indicates when the terminals are closed.
+</p>
+<img src="https://github.com/clammtl/arduinoplantwaterer/blob/master/ArduinoPlantWaterer_sketch.jpg?raw=true" alt="sketch" width="100%" height="100%">
+
+{% endblock %}
+
+
+
+

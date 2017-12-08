@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Last soil moisture data reading
+{% endblock %}
+
+
+{% block main %}
+<style>
+table, th, td {
+    border: 1px solid white;
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #006600;
+    color: white;
+}
+tr {
+    background-color: #808080;
+    color: white;
+}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+		$(document).ready(function() {
+
+		    getUpdates();
+
+		    // check for new updates
+		    setInterval('getUpdates()',30000);
+
+		});
+
+		function getUpdates() {
+			// get the data with a webservice call
+			$.getJSON('http://api.thingspeak.com/channels/376616/feed/last.json?callback=?', function(data) {
+                    if(data){
+                        var tr = "";
+                        var count = Object.keys(data).length;
+                        tr += "<tr><td>"+data.created_at+"</td><td>"+data.field1+"</td></tr>";
+
+
+                        if(tr != ""){
+                            $("#tablebody").html(tr).removeClass("hidden");
+                        }
+
+                    }
+
+            });
+
+
+		}
+
+</script>
+ <table id="data" style="width:100%" align="center">
+    <thead>
+   <tr>
+        <th align="center">Created at</th>
+        <th align="center">Humidity</th>
+    </tr>
+    </thead>
+    <tbody id="tablebody"></tbody>
+</table>
+<br></br>
+This table presents the last feed from ThingSpeak. It uses a webservice call to retrieve a JSON object and presents it in the table.
+The script refreshes makes calls every 30 seconds to retrieve the latest feed. I have decided to use ThingSpeak for its ease of use and easy interface, allowing
+a user with basic programming knowledge to send moisture sensor data to a webserver. In addition, other features can be easily added to this project,
+including the ability to push any activity from ThingSpeak to the arduino if an event is triggered.
+<br></br>
+
+{% endblock %}
